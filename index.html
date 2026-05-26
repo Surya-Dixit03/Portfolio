@@ -35,32 +35,7 @@
       font-size: 14px;
       line-height: 1.7;
       overflow-x: hidden;
-      cursor: none;
     }
-
-    /* Custom cursor */
-    .cursor {
-      position: fixed;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-    }
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(232,41,28,0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: all 0.15s ease;
-    }
-    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 14px; height: 14px; background: var(--accent2); }
-    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 56px; height: 56px; border-color: rgba(255,107,91,0.3); }
 
     /* Noise overlay */
     body::before {
@@ -113,7 +88,6 @@
       font-weight: 700;
       font-size: 13px;
       border: none;
-      cursor: none;
       letter-spacing: 0.02em;
       transition: background 0.2s, transform 0.2s;
     }
@@ -182,7 +156,6 @@
       font-weight: 700;
       font-size: 13px;
       border: none;
-      cursor: none;
       transition: background 0.2s, transform 0.15s;
       text-decoration: none;
       display: inline-block;
@@ -196,7 +169,6 @@
       font-weight: 700;
       font-size: 13px;
       border: 1px solid var(--border);
-      cursor: none;
       transition: border-color 0.2s, color 0.2s, transform 0.15s;
       text-decoration: none;
       display: inline-block;
@@ -314,7 +286,6 @@
       padding: 40px;
       position: relative; overflow: hidden;
       transition: border-color 0.3s, background 0.3s;
-      cursor: none;
     }
     .project-card:hover { border-color: #2a2a2a; background: #161616; }
     .project-card::after {
@@ -525,17 +496,12 @@
       .projects-grid { grid-template-columns: 1fr; }
       .achievements-list { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
-      /* Disable custom cursor on touch */
-      .cursor, .cursor-ring { display: none; }
-      body { cursor: auto; }
       .btn-primary, .btn-outline, .nav-cta { cursor: pointer; }
     }
   </style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -824,18 +790,6 @@
   </footer>
 
   <script>
-    // Custom cursor
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-    (function animRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
-    })();
 
     // Navbar scroll
     const navbar = document.getElementById('navbar');
