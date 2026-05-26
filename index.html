@@ -510,13 +510,25 @@
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
       section { padding: 80px 24px; }
-      #hero { padding: 0 24px 60px; }
-      .hero-bottom { flex-direction: column; align-items: flex-start; gap: 32px; }
+      #hero {
+        min-height: 100svh;
+        padding: 100px 24px 60px;
+        justify-content: center;
+      }
+      .hero-name { font-size: clamp(48px, 13vw, 80px); letter-spacing: -2px; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .hero-btns { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-outline { text-align: center; width: 100%; }
+      .scroll-indicator { display: none; }
       .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .projects-grid { grid-template-columns: 1fr; }
       .achievements-list { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
+      /* Disable custom cursor on touch */
+      .cursor, .cursor-ring { display: none; }
+      body { cursor: auto; }
+      .btn-primary, .btn-outline, .nav-cta { cursor: pointer; }
     }
   </style>
 </head>
